@@ -1,19 +1,27 @@
 let display=document.querySelector("#display");
 let reset=document.querySelector("#resetBtn");
 let count=0;
+let interval;
 
 
 
 let startBtn=()=>{
-    let interval=setInterval(()=>{
+     interval=setInterval(()=>{
          display.innerText=count++;
      },1000)
     display.innerText=count++;
 }
 
-let stopBtn=()=>{
+let resetBtn=()=>
+{
     count=0;
     display.innerText=0;
+    clearInterval(interval);
+}
+
+let stopBtn=()=>
+{
+     clearInterval(interval);
 }
 
 
@@ -26,9 +34,12 @@ document
 addEventListener('click',startBtn);
 
 document
-.querySelector("#stopBtn")
-.addEventListener('click',stopBtn)
+.querySelector("#resetBtn")
+.addEventListener('click',resetBtn);
 
+document
+.querySelector("#stopBtn")
+.addEventListener('click',stopBtn);
 
 
 
